@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+
+
+    <script>
+
+
+        function computerSelection() {
+            choice = Math.floor(Math.random() * 3)
+
+            if (choice == 0) {
+                choice = 'Rock'
+            } else if (choice == 1) {
+                choice = 'Paper'
+            } else if (choice == 2) {
+                choice = 'Scissors'
+            }
+            return choice;
+        }
+
+        function play(playerSelection, computerSelection) {
+
+            playerSelection = playerSelection.toLowerCase();
+            playerSelection = playerSelection.slice(0, 1).toUpperCase() + playerSelection.slice(1);
+
+            winnerStatement = ''
+
+            if (playerSelection == computerSelection) {
+                winnerStatement = 'You Tied!'
+            } else if (playerSelection == 'Rock' && computerSelection == 'Paper') {
+                winnerStatement = 'You Lose! Paper beats Rock!'
+            } else if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
+                winnerStatement = 'You win! Rock beats Scissors!'
+            } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
+                winnerstatement = 'You win! Paper beats Rock!'
+            } else if (playerSelection == 'Paper' && computerSelection == 'Scissors') {
+                winnerStatement = 'You lose! Scissors beats Paper'
+            } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
+                winnerStatement = 'You win! Scissors beats Paper'
+            } else if (playerSelection == 'Scissors' && computerSelection == 'Rock') {
+                winnerStatement = 'You lose! Rock beats Scissors!'
+            }
+
+            console.log(winnerStatement)
+            
+
+        }
+
+        function winCounter(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            playerSelection = playerSelection.slice(0, 1).toUpperCase() + playerSelection.slice(1);
+
+            if (playerSelection == 'Rock' && computerSelection == 'Paper') {
+                ++comp
+            } else if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
+                ++user
+            } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
+                ++user
+            } else if (playerSelection == 'Paper' && computerSelection == 'Scissors') {
+                ++comp
+            } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
+                ++user
+            } else if (playerSelection == 'Scissors' && computerSelection == 'Rock') {
+                ++comp
+            }
+            
+            score = 'Comp: ' + comp + '     You: ' + user
+            console.log(score)
+
+        }
+
+
+        function game() {
+            user = 0
+            comp = 0
+
+            for (i = 0; i < 5; i++) {
+                compChoice = computerSelection()
+                userChoice = prompt()
+
+                play(userChoice, compChoice)
+                winCounter(userChoice, compChoice)
+            }
+
+            if (comp > user) {
+                return ('You lose!')
+            } else if (comp == user) {
+                return ('TIE!')
+            } else if (user > comp) {
+                return ('You win!')
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
